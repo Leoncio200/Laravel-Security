@@ -1,0 +1,248 @@
+body{
+    min-height: 100vh;
+    background: url("../../public/assets/background.png") no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+
+/*Login*/
+.body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.wrapper {
+    width: 420px;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, .2);
+    backdrop-filter: blur(30px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+    color: #fff;
+    border-radius: 10px;
+    padding: 30px 60px;
+}
+
+.wrapper h1 {
+    font-size: 36px;
+    text-align: center;
+}
+
+.wrapper .input-box {
+    position: relative;
+    width: 100%;
+    height: 10px;
+    background: transparent;
+    margin: 50px 35px 4rem -2.2rem;
+}
+
+.input-box input {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, .2);
+    outline: none;
+    border-radius: 40px;
+    color: #fff;
+    padding: 20px 45px 20px 20px;
+
+}
+
+.input-box input::placeholder {
+    color: #fff;
+}
+
+.input-box .icon {
+    position: absolute;
+    right: -3rem;
+    top: 50%;
+    transform: translateY(20%);
+    width: 30px;
+}
+
+.recaptcha{
+    margin: 1.5rem 0;
+}
+
+.wrapper .remember-forgot {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14.5px;
+    margin: -15px 0 15px;
+}
+
+.remember-forgot label input {
+    accent-color: #fff;
+    margin-right: 4px;
+}
+
+.remember-forgot .li {
+    color: #fff;
+    text-decoration: none;
+}
+
+.remember-forgot .li:hover {
+    text-decoration: underline;
+}
+
+.wrapper button {
+    width: 100%;
+    height: 45px;
+    background: #fff;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    cursor: pointer;
+    font-size: 16px;
+    color: #333;
+    font-weight: 700;
+}
+
+.wrapper .register-link {
+    font-size: 14.5px;
+    text-align: center;
+    margin: 20px 0 15px;
+}
+
+.register-link p a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.register-link p a:hover {
+    text-decoration: underline;
+}
+/*End Login*/
+
+/*Register*/
+.register-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.register-wrapper {
+    width: 420px;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, .2);
+    backdrop-filter: blur(30px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+    color: #fff;
+    border-radius: 10px;
+    padding: 30px 60px;
+}
+
+.register-wrapper h1 {
+    font-size: 36px;
+    text-align: center;
+}
+
+.register-wrapper .input-box-register {
+    position: relative;
+    width: 100%;
+    height: 10px;
+    background: transparent;
+    margin: 40px 35px 3.4rem -2.2rem;
+}
+
+.input-box-register input {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, .2);
+    outline: none;
+    border-radius: 40px;
+    color: #fff;
+    padding: 20px 45px 20px 20px;
+
+}
+
+.input-box-register input::placeholder {
+    color: #fff;
+}
+
+.input-box-register .edad::-webkit-inner-spin-button,
+.input-box-register .edad::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.alert{
+    background: transparent;
+    padding: 0 0 0 10px;
+    color: red;
+    display: none;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+}
+
+.alert.activated {
+    display: block;
+}
+
+.input-box-register .icon {
+    position: absolute;
+    right: -3rem;
+    top: 50%;
+    transform: translateY(27%);
+    width: 30px;
+}
+
+
+.register-wrapper .register-btn {
+    width: 100%;
+    height: 45px;
+    background: #fff;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    cursor: pointer;
+    font-size: 16px;
+    color: #333;
+    font-weight: 700;
+    margin: 20px 0 0;
+}
+
+.register-wrapper .login-link {
+    font-size: 14.5px;
+    text-align: center;
+    margin: 20px 0 15px;
+}
+
+.login-link p a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.login-link p a:hover {
+    text-decoration: underline;
+}
+/*End Register*/
+
+/*ConfirmarView*/
+.container{
+    text-align: center;
+    color: #fff;
+}
+/*End ConfirmarView*/
+
+.alerta{
+    background-color: red;
+    margin: 1.5rem;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.alertado{
+    background-color: red;
+    text-align: center;
+    border-radius: 10px;
+}
