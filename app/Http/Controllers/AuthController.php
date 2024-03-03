@@ -15,7 +15,7 @@ use Illuminate\Foundation\Auth\EmailVerificationRequest;
 class AuthController extends Controller
 {
     public function getlogin(){
-        return view('login');
+        return view('Login');
     }
 
     public function getregistro(){
