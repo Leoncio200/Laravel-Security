@@ -39,7 +39,7 @@ class Email extends Mailable
      */
     public function content(): Content
     {
-        $url = URL::temporarySignedRoute('login.verify',now()->addMinutes(1), ['id' => $this->user->id]);
+        $url = URL::temporarySignedRoute('login.verify',now()->addMinutes(5), ['id' => $this->user->id]);
         return new Content(
             view: 'email.welcome',
             with:[

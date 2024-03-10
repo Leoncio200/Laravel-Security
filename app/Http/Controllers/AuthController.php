@@ -132,21 +132,22 @@ class AuthController extends Controller
         return redirect('/home');
     }
 
-    public function verifycode(Request $request, int $id){  
+    public function verifycode(Request $request){  
         $validated = Validator::make($request->all(),[
             'code' => 'required',
-            '_id' => 'required'
+            'user_id' => 'required'
         ],[
             'code.required' => 'El codigo es requerido',
         ]);   
+        //dd($request);
 
         if(!$validated->fails()){
-            $user = User::find($id);
+            $user = User::find($request->user_id);
        
             $user->verify = true;
             $user->save();
 
-            return redirect('/home');
+            return redirect('/home')->with('user', $user);
         }
         return redirect('/codeview')->withInput()->withErrors($validated);
         
