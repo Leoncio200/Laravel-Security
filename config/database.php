@@ -76,6 +76,10 @@ return [
             'prefix_indexes' => true,
             'search_path' => 'public',
             'sslmode' => env('DB_SSLMODE', 'prefer'),
+            'sslrootcert' => storage_path('client.crt'),
+            'sslcert' => storage_path('client.key'),
+            'sslkey' => storage_path('ca.crt')
+
         ],
 
         'sqlsrv' => [
