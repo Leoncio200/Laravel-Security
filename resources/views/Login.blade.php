@@ -15,12 +15,12 @@
                 <h1>Login</h1>
                 <div class='input-box'>
                     <input type="email" name='email' placeholder='Email' value="{{ old('email') }}" required/>
-                    
+                    <x-entypo-email class="icon"/>
                 </div>
                 
                 <div class='input-box'>
                     <input type="password"  name='password' placeholder='Password' required/>
-                    
+                    <x-tni-password-o class="icon"/>
                 </div>
 
                 <div class="recaptcha">

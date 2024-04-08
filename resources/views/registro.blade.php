@@ -14,27 +14,27 @@
                 <h1>Registro</h1>
                 <div class="input-box-register">
                     <input type="text" name="name" placeholder="Nombre" value="{{ old('name') }}" required>
-                    
+                    <x-sui-write class="icon"/>
                 </div>
                 
                 <div class="input-box-register">
                     <input type="email" name="email" placeholder="Correo" value="{{ old('email') }}" required>
-                   
+                    <x-entypo-email class="icon"/>
                 </div>
 
                 <div class="input-box-register">
                     <input type="number" name="number" placeholder="Numero" value="{{ old('number') }}" required>
-                    
+                    <x-entypo-email class="icon"/>
                 </div>
                 
                 <div class="input-box-register">
                     <input type="password" name="password" placeholder="Contraseña" required>
-                  
+                    <x-tabler-password class="icon"/>
                 </div>
                 
                 <div class="input-box-register">
                     <input type="password" name="password2" placeholder="Confirmacion de contraseña" required>
-                    
+                    <x-tabler-password class="icon"/>
                 </div>
                 @error('email')
                     <div class="alerta">{{$message}}</div>

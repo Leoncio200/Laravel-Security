@@ -20,8 +20,6 @@ return new class extends Migration
             ->after('verify');
             $table->string('code')
             ->after('number')->nullable();
-            $table->string('codeAdmin')
-            ->after('number')->nullable();
 
             $table->foreign('rol_id')->references('id')->on('rols');
 
