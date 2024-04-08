@@ -21,6 +21,8 @@ class Kernel extends HttpKernel
         \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
         \App\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
+        \App\Http\Middleware\CheckRole::class,
+        \App\Http\Middleware\DisableCsrfProtection::class,
     ];
 
     /**
@@ -36,6 +38,8 @@ class Kernel extends HttpKernel
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
+            \App\Http\Middleware\CheckRole::class,
+            \App\Http\Middleware\DisableCsrfProtection::class,
         ],
 
         'api' => [
@@ -66,5 +70,8 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'rol' => \App\Http\Middleware\RolMiddleware::class,
         'verifyemail' => \App\Http\Middleware\IsAdminVerifyMiddleware::class,
+        'obtener' => \App\Http\Middleware\CheckRole::class,
+        'VPN' => \App\Http\Middleware\VPNMiddleware::class,
+
     ];
 }

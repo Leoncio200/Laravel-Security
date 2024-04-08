@@ -54,4 +54,6 @@ class User extends Authenticatable implements MustVerifyEmail
     public function isVerify(){
         return $this->verify;
     }
+
+    
 }
