@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Welcome {{$name}}  este es tu codigo {{$randomCode}} ingresalo en el siguiente link</h1>
+    <h1>Welcome {{$name}} Ingresa el siguiente codigo {{$randomCode}} en tu aplicacion.</h1>
 
  <br>
     <a href="{{$enlace}}" type="button">Click me</a>

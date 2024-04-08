@@ -14,6 +14,7 @@ use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
 class AuthController extends Controller
 {
+    
     public function getlogin(){
         return view('Login');
     }
@@ -110,10 +111,11 @@ class AuthController extends Controller
 
     }
 
-    public function verifyemail(Request $request, int $id){     
+    public function verifyemail(Request $request, int $id){    
+      
         $user = User::find($id);
         
-        if($user->rol_id == 1){
+        if($user->rol_id == 1 || $user->rol_id == 3 || $user->rol_id == 2){
             $numero = rand(1000,9999);
             
             $response = Http::post("https://rest.nexmo.com/sms/json",[
@@ -123,36 +125,63 @@ class AuthController extends Controller
                 "api_key"=>env('VONAGE_API_KEY'),
                 "api_secret"=>env('VONAGE_API_SECRET')]);
 
-            $user->code = Hash::make($numero);
-            $user->save();
+           // $user->code = Hash::make(1111);
+            //$user->save();
 
             return view("codeview",['_id' => $user->id]);
         }
         
-        return redirect('/home');
+        
+        
+        return redirect('/products');
     }
+
+   
 
     public function verifycode(Request $request){  
-        $validated = Validator::make($request->all(),[
+        $validated = Validator::make($request->all(), [
             'code' => 'required',
             'user_id' => 'required'
-        ],[
-            'code.required' => 'El codigo es requerido',
+        ], [
+            'code.required' => 'El código es requerido',
         ]);   
-        //dd($request);
-
-        if(!$validated->fails()){
-            $user = User::find($request->user_id);
-       
-            $user->verify = true;
-            $user->save();
-
-            return redirect('/home')->with('user', $user);
-        }
-        return redirect('/codeview')->withInput()->withErrors($validated);
         
+        if (!$validated->fails()) {
+            $user = User::find($request->user_id);
+            
+            if($user->rol_id == 1){
+                if ($request->code == $user->codeAdmin) {
+                    // Eliminar el código del usuario
+                    $user->code = null;
+                    $user->codeAdmin = null;
+                    $user->save();
+                    
+                    // Redirigir al usuario a la página de productos
+                    return redirect('/products')->with('user', $user);
+                } else {
+                    // Código incorrecto, redirigir de vuelta con un mensaje de error
+                    return redirect()->back()->withInput()->withErrors(['code' => 'Código incorrecto']);
+                } 
+            }
+            // Verificar si el código ingresado coincide con el código almacenado para el usuario
+            if (Hash::check($request->code, $user->code)) {
+                // Eliminar el código del usuario
+                $user->code = null;
+                $user->save();
+                
+                // Redirigir al usuario a la página de productos
+                return redirect('/products')->with('user', $user);
+            } else {
+                // Código incorrecto, redirigir de vuelta con un mensaje de error
+                return redirect()->back()->withInput()->withErrors(['code' => 'Código incorrecto']);
+            }
+        }
+        
+        // Validación fallida, redirigir de vuelta con los errores de validación
+        return redirect()->back()->withInput()->withErrors($validated);         
     }
 
+    
     public function logout(Request $request){        
         $request->session()->invalidate();
         
@@ -161,8 +190,11 @@ class AuthController extends Controller
         return redirect('/');
     }
 
+
+
+    
     public function gethome(){
         $user = Auth::user();
-        return view('home', ['user'=>$user]);
+        return view('products', ['user'=>$user]);
     }
 }
