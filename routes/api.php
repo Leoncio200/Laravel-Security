@@ -12,6 +12,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Middleware\CheckRole;
 use App\Http\Middleware\DisableCsrfProtection;
 use App\Http\Controllers\AppController;
+use App\Http\Middleware\CheckHostMiddleware;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,11 +37,12 @@ use App\Http\Controllers\AppController;
 
 //Route::post('/recaptcha',[AuthController::class, 'recaptcha']);
 
-Route::post('validar_usuario',[AppController::class, 'validarUsuario']);
+//Route::post('validar_usuario',[AppController::class, 'validarUsuario']);
+Route::post('validar_usuario', [AppController::class, 'validarUsuario'])->middleware(CheckHostMiddleware::class);
 
-Route::post('validar_codigo', [AppController::class, 'validarCodigo']);
+Route::post('validar_codigo', [AppController::class, 'validarCodigo'])->middleware(CheckHostMiddleware::class);
 
-Route::post('code_admin', [AppController::class, 'codeAdmin']);
+Route::post('code_admin', [AppController::class, 'codeAdmin'])->middleware(CheckHostMiddleware::class);
 
 Route::post('prueba',function () {
   return 'Hola mundo';

@@ -102,6 +102,7 @@ class AuthController extends Controller
             $request->session()->regenerate();
             $user = Auth::user();
 
+            //admin
             if($user->rol_id == 1){
                 if(!AuthController::ipInRange($request->getHost(), "10.0.0.0/24")){
                     $validated->errors()->add(
@@ -113,8 +114,18 @@ class AuthController extends Controller
                     
                     return redirect('/login')->withInput()->withErrors($validated);
                 }
-            }
-            
+            }else if($user->rol_id == 3){
+                if(!AuthController::ipInRange($request->getHost(), "kotli.site")){
+                    $validated->errors()->add(
+                        'Auth', 'Las credenciales no coinciden'
+                    );
+
+                    $request->session()->invalidate();
+                    $request->session()->regenerateToken();
+                    
+                    return redirect('/login')->withInput()->withErrors($validated);
+                }
+            }            
             MailSend::dispatch($user)->delay(now()->addMinutes(1))->onQueue('MailSend');
             return view('confirmacionView',['user'=>$user]);
             

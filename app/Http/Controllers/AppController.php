@@ -12,9 +12,7 @@ class AppController extends Controller
     public function validarUsuario(Request $request)
     {
         // Si es una solicitud GET, realiza la validación de las credenciales
-        if($request->getHost() != "10.0.0.4"){
-            return response()->json(['error' => 'Permiso Denegado'], 400);
-        }
+        
 
         $usu_usuario = $request->query('usuario');
         $usu_password = $request->query('password');
@@ -37,9 +35,7 @@ class AppController extends Controller
 
     public function validarCodigo(Request $request)
     {
-        if($request->getHost() != "10.0.0.4"){
-            return response()->json(['error' => 'Permiso Denegado'], 400);
-        }
+        
 
          // Si es una solicitud GET, realiza la validación de las credenciales
          $codigo = $request->query('codigo');
@@ -71,9 +67,7 @@ class AppController extends Controller
 
     public function codeAdmin(Request $request)
     {
-        if($request->getHost() != "10.0.0.4"){
-            return response()->json(['error' => 'Permiso Denegado'], 400);
-        }
+       
         // Si es una solicitud GET, realiza la validación de las credenciales
         $usuario = $request->query('usuario');
         $password = $request->query('password');
