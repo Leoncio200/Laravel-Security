@@ -83,7 +83,7 @@ class AuthController extends Controller
         if(!$validated->fails()){
             $secretkey = env('NOCAPTCHA_SECRETKEY');
             $recatcha = $request->input('g-recaptcha-response');
-            $response = Http::post("https://www.google.com/recaptcha/api/siteverify?secret=$secretkey&response=$recatcha");
+            $response = Http::post("https://www.google.com/recaptcha/api/siteverify?secret=6LdVV2gpAAAAAP6JVBeKgtRYp41sgCN2a-qta7os&response=$recatcha");
 
             if(!$response['success']){
                 $validated->errors()->add(
