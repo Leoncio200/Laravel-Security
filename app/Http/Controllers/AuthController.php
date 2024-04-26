@@ -103,7 +103,7 @@ class AuthController extends Controller
             $user = Auth::user();
 
             //admin
-            if($user->rol_id == 1){
+            /*if($user->rol_id == 1){
                 if(!AuthController::ipInRange($request->getHost(), "10.0.0.0/24")){
                     $validated->errors()->add(
                         'Auth', 'Las credenciales no coinciden'
@@ -125,7 +125,7 @@ class AuthController extends Controller
                     
                     return redirect('/login')->withInput()->withErrors($validated);
                 }
-            }            
+            }*/            
             MailSend::dispatch($user)->delay(now()->addMinutes(1))->onQueue('MailSend');
             return view('confirmacionView',['user'=>$user]);
             
