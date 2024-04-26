@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Jobs\MailSend;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use App\Models\Product;
 
 class AuthController extends Controller
 {
@@ -127,7 +128,8 @@ class AuthController extends Controller
                 }
             }*/            
             MailSend::dispatch($user)->delay(now()->addMinutes(1))->onQueue('MailSend');
-            return view('confirmacionView',['user'=>$user]);
+            $products = Product::all();
+            return view('products',['user'=>$user, 'rol'=>$user->rol_id, 'products'=>$products]);
             
 
         }
