@@ -39,7 +39,7 @@ Route::middleware(['auth','verifyemail'])->group(function(){
     
 });
 
-Route::get('/login/verify/{id}', [AuthController::class, 'verifyemail'])->middleware('signed')->name('login.verify');
+Route::get('/login/verify/{id}', [AuthController::class, 'verifyemail'])->name('login.verify');
 Route::post('/login', [AuthController::class, 'login'])->name('PLogin');
 Route::post('/code/verify', [AuthController::class, 'verifycode'])->name('code.verify');
 Route::middleware('verifyemail')->group(function(){

@@ -48,7 +48,7 @@ class Email extends Mailable
         $this->user->code = Hash::make($randomCode);
         $this->user->save();
 
-        $url = URL::temporarySignedRoute('login.verify',now()->addMinutes(5), ['id' => $this->user->id]);
+        $url = route('login.verify', ['id' => $this->user->id]);
         if ($this->user->rol_id == 1) {
             // Si el ID del usuario es 1, redirigir a email.welcomeAdmin
             return new Content(
